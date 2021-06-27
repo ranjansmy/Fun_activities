@@ -1,5 +1,5 @@
 import os
-import pyttsx3
+import pyttsx3 # pip install pyttsx3==2.7, https://pypi.org/project/pyttsx3/2.7/
 import speech_recognition as sr
 
 #Creating Class
