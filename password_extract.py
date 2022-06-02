@@ -1,6 +1,7 @@
 import zipfile
 import optparse
 from threading import Thread
+import os
 
 def extractFile(zFile, password):
     try:
