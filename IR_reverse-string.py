@@ -21,5 +21,4 @@ print (reverse(message))
 def reverse(string):
     string = "".join(reversed(string))
     return string
-
 print(reverse(message))
