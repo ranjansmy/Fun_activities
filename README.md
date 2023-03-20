@@ -1,2 +1,3 @@
 # HandyScriptsRepos
-Codes are tested in https://replit.com/
+Try online IDE https://replit.com/
+VS code
