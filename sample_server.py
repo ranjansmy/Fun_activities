@@ -1,4 +1,4 @@
-from socket import *
+"""from socket import *
 
 def createServer():
     serversocket = socket(AF_INET, SOCK_STREAM)
@@ -29,3 +29,31 @@ def createServer():
 
 print("Access http://localhost:9000")
 createServer()
+"""
+from socket import *
+
+def createServer():
+    with socket(AF_INET, SOCK_STREAM) as serversocket:
+        serversocket.bind(('localhost', 9000))
+        serversocket.listen(5)
+
+        print("Access http://localhost:9000")
+
+        while True:
+            clientsocket, address = serversocket.accept()
+
+            rd = clientsocket.recv(5000).decode()
+            if rd:
+                print(rd.split('\n')[0])
+
+            data = "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<html><body>Beloved Programmer!!</body></html>\r\n"
+            clientsocket.sendall(data.encode())
+            clientsocket.shutdown(SHUT_WR)
+
+if __name__ == '__main__':
+    try:
+        createServer()
+    except KeyboardInterrupt:
+        print("\nShutting down...\n")
+    except Exception as exc:
+        print("Error:", exc)
